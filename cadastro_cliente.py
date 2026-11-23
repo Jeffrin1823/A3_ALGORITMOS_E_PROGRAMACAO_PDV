@@ -17,6 +17,7 @@ def cadastro_cliente():
                               print("nome invalido por execesso de caracteres, por favor informe apenas nome e sobrenome")
                               continue
                         data_nascimento = input("Informe a data de nascimento do cliente no formato DD/MM/AAAA: ")
+                        print(data_nascimento)
                         dia, mes, ano = data_nascimento.split("/")
                         dia = int(dia)
                         mes = int(mes)
@@ -25,7 +26,7 @@ def cadastro_cliente():
                         idade = hoje.year - ano                        
                         if (hoje.month, hoje.day) < (mes, dia):                       
                               idade -= 1
-                        endereco = input("Informe o endereço do cliente: ").strip().lower().capitalize()
+                        endereco = input("Informe o endereço do cliente: ").strip().title()
                         cpf = input("Informe o CPF do cliente sem traços ou pontos : ")
                         cpf = cpf.replace(".", "").replace("-", "")
                         if len(cpf) != 11 or not cpf.isdigit():

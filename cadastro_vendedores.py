@@ -29,7 +29,7 @@ def cadastro_de_vendedores():
                 if len(cpf) != 11 or not cpf.isdigit():
                     print("CPF inválido!")
                     continue
-                vendedores[f"{id:04d}"] = {"Nome": nome, "Idade": idade, "CPF": cpf, "Endereço": endereco}
+                vendedores[f"{id:04d}"] = {"nome": nome, "idade": idade, "CPF": cpf, "Endereço": endereco}
                 id += 1
 
                 while True:
