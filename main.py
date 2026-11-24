@@ -1,7 +1,7 @@
 from cadastro_cliente import cadastro_cliente, mostrar_cliente
 from cadastro_produto import cadastro_produto, mostrar_produto
 from cadastro_vendedores import cadastro_de_vendedores, mostrar_vendedores
-from vendas import realizar_venda
+from vendas import realizar_venda, gerar_relatorio
 from time import sleep
 
 def main():
@@ -79,8 +79,14 @@ def main():
                     print(".", end="", flush=True)
                 sleep(0.5)
                 print("")
-            #else:
-                #lógica de recibo/relatório
+            else:
+                while True:
+                    gerar_relatorio(vendas)
+                    continuar = input("Deseja emitir outro relatório?  (s/n) ").strip().lower()
+                    if continuar in ("sim", "s"):
+                        continue
+                    elif continuar in ("não", "nao", "n"):  
+                        break                    
         elif opcao_pdv == 0:
             print("Encerrando PDV.")
             break
