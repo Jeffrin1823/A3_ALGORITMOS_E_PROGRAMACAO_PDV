@@ -26,11 +26,11 @@ def main():
                 print("0 - Sair do menu de cadastro\n")
                 opcao_cadastro = int(input("Tipo de cadastro desejado: "))
                 if opcao_cadastro == 1:
-                    clientes = cadastro_cliente()
+                    cadastro_cliente(clientes)
                 elif opcao_cadastro == 2:
-                    vendedores = cadastro_de_vendedores()
+                    cadastro_de_vendedores(vendedores)
                 elif opcao_cadastro == 3:
-                    produtos = cadastro_produto()
+                    cadastro_produto(produtos)
                 elif opcao_cadastro == 0:
                     break
                 else:

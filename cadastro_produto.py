@@ -1,6 +1,7 @@
-def cadastro_produto():
-    produto = {}
+def cadastro_produto(produto):
     id = 1
+    while f"{id:04d}" in produto:
+        id += 1
 
     while True:
             p = input("Deseja Cadastrar algum Produto (s/n)? " ).strip().lower()
@@ -60,5 +61,6 @@ def mostrar_produto(produto):
         print("=" * 20)
 
 if __name__ == "__main__":
-    produto = cadastro_produto()
+    produto = {}
+    cadastro_produto(produto)
     mostrar_produto(produto)

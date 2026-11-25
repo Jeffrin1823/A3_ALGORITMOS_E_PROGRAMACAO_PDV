@@ -1,9 +1,9 @@
 from datetime import datetime
-def cadastro_cliente():
-      cliente = {}
+def cadastro_cliente(cliente):
       id = 1
+      while f"{id:04d}" in cliente:
+            id += 1
       
-
       while True:
             cadastro = input("Deseja Cadastrar o cliente? (s/n) ").strip().lower()
             if cadastro.strip().lower() in ("sim", "s"):
@@ -62,5 +62,6 @@ def mostrar_cliente(cliente):
             print(f"ID: CL{id}")
             print("=" * 20)
 if __name__ == "__main__":
-      cliente = cadastro_cliente()
+      cliente = {}
+      cadastro_cliente(cliente)
       mostrar_cliente(cliente)

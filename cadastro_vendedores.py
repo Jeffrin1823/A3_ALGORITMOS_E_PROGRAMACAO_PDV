@@ -1,7 +1,8 @@
 from datetime import datetime
-def cadastro_de_vendedores():
-    vendedores = {}
+def cadastro_de_vendedores(vendedores):
     id = 1
+    while f"{id:04d}" in vendedores:
+        id += 1
 
     while True:
         adicionar_vendedor = input("Deseja cadastrar algum vendedor (s/n)? ").strip().lower()
@@ -51,12 +52,13 @@ def cadastro_de_vendedores():
 def mostrar_vendedores(vendedores):
     print("=" * 20)
     for id, dados in vendedores.items():
-        print(f"Nome: {dados['Nome']}")
-        print(f"Idade: {dados['Idade']}")
+        print(f"Nome: {dados['nome']}")
+        print(f"Idade: {dados['idade']}")
         print(f"Endereço: {dados['Endereço']}")
         print(f"CPF: {dados['CPF'][:3]}.{dados['CPF'][3:6]}.{dados['CPF'][6:9]}-{dados['CPF'][9:]}")
         print(f"ID: VD{id}")
         print("=" * 20)
 if __name__ == "__main__":
-    vendedores = cadastro_de_vendedores()
+    vendedores = {}
+    cadastro_de_vendedores(vendedores)
     mostrar_vendedores(vendedores)
