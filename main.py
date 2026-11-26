@@ -82,7 +82,7 @@ def main():
             else:
                 while True:
                     gerar_relatorio(vendas)
-                    continuar = input("Deseja emitir outro relatório?  (s/n) ").strip().lower()
+                    continuar = input("\nDeseja emitir outro relatório?  (s/n) ").strip().lower()
                     if continuar in ("sim", "s"):
                         continue
                     elif continuar in ("não", "nao", "n"):  

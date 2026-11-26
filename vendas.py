@@ -160,15 +160,34 @@ def realizar_venda(clientes, vendedores, produtos, vendas):
 # FUNÇÃO PARA GERAR RELATÓRIOS FINANCEIROS
 def gerar_relatorio(vendas):
 
-    data_inicio = input("Data inicial (DD/MM/AAAA): ")
-    data_fim = input("Data final (DD/MM/AAAA): ")
+    while True:
+        while True: 
+            data_inicio = input("Data inicial (DD/MM/AAAA): ")
+            if not data_inicio:
+                print("Você deve informar data inicial.")
+                continue 
+            try: 
+                data_inicio = datetime.strptime(data_inicio, "%d/%m/%Y").date()
+            except ValueError:
+                        print("Data inválida! Utilize o formato DD/MM/AAAA.")
+                        continue
+            break
 
-    data_inicio = datetime.strptime(data_inicio, "%d/%m/%Y").date()
-    data_fim = datetime.strptime(data_fim, "%d/%m/%Y").date()
-
-    if data_inicio > data_fim:
-        print("A data inicial não pode ser posterior à data final.")
-        return
+        while True:
+            data_fim = input("Data final (DD/MM/AAAA): ")
+            if not data_fim:
+                    print("Você deve informar data final.")
+                    continue
+            try: 
+                data_fim = datetime.strptime(data_fim, "%d/%m/%Y").date()
+            except ValueError:
+                print("Data inválida! Utilize o formato DD/MM/AAAA.")
+                continue
+            if data_inicio > data_fim:
+                print("A data final deve ser posterior à data inicial.")
+                continue
+            break
+        break
 
     total_vendas = 0
     total_imposto = 0
@@ -202,7 +221,7 @@ def gerar_relatorio(vendas):
 
             comissao_vendedores[vendedor] += comissao
 
-    print("========== RELATÓRIO FINANCEIRO ==========")
+    print("\n========== RELATÓRIO FINANCEIRO ==========")
     print(f"\nPeríodo: {data_inicio.strftime('%d/%m/%Y')} até {data_fim.strftime('%d/%m/%Y')} ")
 
     if total_vendas == 0:
@@ -224,4 +243,3 @@ def gerar_relatorio(vendas):
             print(f"{vendedor:<25} Comissão: {comissao:.2f}")
     else:
         print("Nenhuma comissão registrada no período informado.")
-
